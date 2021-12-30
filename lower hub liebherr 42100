@@ -1,0 +1,35 @@
+# this code has the right track directions and the red buttons of the remote are used for turning.
+
+from pybricks.pupdevices import *
+from pybricks.parameters import *
+from pybricks.tools import wait
+
+Motor1 = Motor(Port.A)
+Motor2 = Motor(Port.B)
+Motor3 = Motor(Port.D)
+remoteControl = Remote()
+
+#main loop
+while True:
+  pressed = remoteControl.buttons.pressed()
+  if Button.LEFT_PLUS in pressed:
+   Motor1.dc(100)
+  elif Button.LEFT_MINUS in pressed:
+   Motor1.dc(-100)
+  else: 
+   Motor1.dc(0)
+        
+  if Button.RIGHT_PLUS in pressed:
+    Motor2.dc(-100)
+  elif Button.RIGHT_MINUS in pressed:
+   Motor2.dc(100)
+  else:
+    Motor2.dc(0)
+  if Button.RIGHT in pressed:
+   Motor3.dc(-100)
+  elif Button.LEFT in pressed:
+   Motor3.dc(100)
+  else:
+   Motor3.dc(0)
+
+  wait(100)
